@@ -196,7 +196,9 @@ public class Weapon implements Cloneable{
 
     public void update(Unit unit, WeaponMount mount){
         boolean can = unit.canShoot();
-        mount.reload = Math.max(mount.reload - Time.delta * unit.reloadMultiplier, 0);
+        if (reload > 0){
+            mount.reload = mount.reload - Time.delta * unit.reloadMultiplier;
+        }
 
         float
         weaponRotation = unit.rotation - 90 + (rotate ? mount.rotation : 0),
@@ -281,7 +283,7 @@ public class Weapon implements Cloneable{
         }
 
         //shoot if applicable
-        if(mount.shoot && //must be shooting
+        while(mount.shoot && //must be shooting
         can && //must be able to shoot
         (!useAmmo || unit.ammo > 0 || !state.rules.unitAmmo || unit.team.rules().infiniteAmmo) && //check ammo
         (!alternate || mount.side == flipSprite) &&
@@ -291,7 +293,7 @@ public class Weapon implements Cloneable{
         ){
             shoot(unit, mount, bulletX, bulletY, mount.aimX, mount.aimY, mountX, mountY, shootAngle, Mathf.sign(x));
 
-            mount.reload = reload;
+            mount.reload += reload;
 
             if(useAmmo){
                 unit.ammo--;
