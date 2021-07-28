@@ -196,7 +196,7 @@ public class Weapon implements Cloneable{
 
     public void update(Unit unit, WeaponMount mount){
         boolean can = unit.canShoot();
-        if (reload > 0){
+        if (mount.reload > 0){
             mount.reload = mount.reload - Time.delta * unit.reloadMultiplier;
         }
 
