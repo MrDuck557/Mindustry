@@ -316,8 +316,9 @@ public class ItemBridge extends Block{
         }
 
         public void doDump(){
-            //allow dumping multiple times per frame
-            dumpAccumulate();
+            //allow dumping multiple times per frame -Anuke
+            //already supported in general
+            dump();
         }
 
         public void updateTransport(Building other){

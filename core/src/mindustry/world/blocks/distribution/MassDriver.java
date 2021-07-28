@@ -148,7 +148,7 @@ public class MassDriver extends Block{
 
             //dump when idle or accepting
             if(state == DriverState.idle || state == DriverState.accepting){
-                dumpAccumulate();
+                dump();
             }
 
             //skip when there's no power
