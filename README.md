@@ -5,4 +5,4 @@ Due to the nature of item transfer, DO NOT put an item source next to an item vo
 
 Compiled version already avaliable [here](https://github.com/MrDuck557/MindustryFPSUncapped/blob/master/FPSBegone126.1.jar)
 
-v7 version (specifically 129) avaliable [here](https://github.com/MrDuck557/MindustryFPSUncapped/blob/master/FPSBegone129.jar)
+v7 version (specifically 129.2) avaliable [here](https://github.com/MrDuck557/MindustryFPSUncapped/blob/master/FPSBegone129.2.jar)
