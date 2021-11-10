@@ -33,7 +33,7 @@ public class ParticleEffect extends Effect{
     /** Controls the initial and final sprite sizes. */
     public float sizeFrom = 2f, sizeTo = 0f;
     /** Whether the rotation adds with the parent */
-    public boolean additive = true;
+    public boolean useRotation = true;
     /** Rotation offset. */
     public float offset = 0;
     /** Sprite to draw. */
@@ -55,7 +55,7 @@ public class ParticleEffect extends Effect{
     public void render(EffectContainer e){
         if(tex == null) tex = Core.atlas.find(region);
 
-        float realRotation = (additive ? e.rotation : baseRotation)
+        float realRotation = (useRotation ? e.rotation : baseRotation)
         float rawfin = e.fin();
         float fin = e.fin(interp);
         float rad = sizeInterp.apply(sizeFrom, sizeTo, rawfin) * 2;
