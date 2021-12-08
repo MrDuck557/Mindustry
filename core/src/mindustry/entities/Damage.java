@@ -334,7 +334,7 @@ public class Damage{
     /** Applies a status effect to all enemy units in a range. */
     public static void status(Team team, float x, float y, float radius, StatusEffect effect, float duration, boolean air, boolean ground){
         Cons<Unit> cons = entity -> {
-            if(entity.team == team || !entity.within(x, y, radius) || (entity.isFlying() && !air) || (entity.isGrounded() && !ground)){
+            if(entity.team == team || !entity.within(x, y, radius + entity.type.hitSize/2) || (entity.isFlying() && !air) || (entity.isGrounded() && !ground)){
                 return;
             }
 
@@ -357,10 +357,10 @@ public class Damage{
     /** Damages all entities and blocks in a radius that are enemies of the team. */
     public static void damage(Team team, float x, float y, float radius, float damage, boolean complete, boolean air, boolean ground){
         Cons<Unit> cons = entity -> {
-            if(entity.team == team || !entity.within(x, y, radius) || (entity.isFlying() && !air) || (entity.isGrounded() && !ground)){
+            if(entity.team == team || !entity.within(x, y, radius + entity.type.hitSize/2) || (entity.isFlying() && !air) || (entity.isGrounded() && !ground)){
                 return;
             }
-            float amount = calculateDamage(x, y, entity.getX(), entity.getY(), radius, damage);
+            float amount = calculateDamage(x, y, entity.getX(), entity.getY(), radius + entity.type.hitSize/2, damage);
             entity.damage(amount);
             //TODO better velocity displacement
             float dst = tr.set(entity.getX() - x, entity.getY() - y).len();
